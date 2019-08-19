@@ -1,0 +1,59 @@
+{
+  "name": "js-starter-boilerplate",
+  "version": "1.0.0",
+  "description": "A simple boilerplate for simple JS projects",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint src/*.js",
+    "prepush": "npm run lint && npm run test:coverage",
+    "test": "./node_modules/.bin/mocha --require ./tests/testHelper.js tests/**/*.spec.js",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "nyc npm test",
+    "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",
+    "start": "./node_modules/.bin/webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavocardoso/js-starter-boilerplate.git"
+  },
+  "keywords": [
+    "js",
+    "starter",
+    "boilerplate",
+    "app",
+    "dev"
+  ],
+  "author": "Gustavo Cardoso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustavocardoso/js-starter-boilerplate/issues"
+  },
+  "homepage": "https://github.com/gustavocardoso/js-starter-boilerplate#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.6",
+    "eslint": "^6.2.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^3.0.4",
+    "jsdom": "^15.1.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^6.2.0",
+    "node-fetch": "^2.6.0",
+    "nyc": "^14.1.1",
+    "rimraf": "^3.0.0",
+    "sinon": "^7.4.1",
+    "sinon-chai": "^3.3.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  }
+}
