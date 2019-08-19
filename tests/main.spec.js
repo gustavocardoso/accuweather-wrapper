@@ -1,8 +1,93 @@
-import { expect } from 'chai'
+import chai, { expect } from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
 
-describe('Main', () => {
-  it('should be true', () => {
-    const firstTest = true
-    expect(firstTest).to.be.true
+import AccuWeatherWrapper from '../src/main'
+
+chai.use(sinonChai)
+
+global.fetch = require('node-fetch')
+
+describe('AccuWeatherWrapper Library', () => {
+  it('should create an instance of AccuWeatherWrapper', () => {
+    const accuweather = new AccuWeatherWrapper({})
+    expect(accuweather).to.be.an.instanceOf(AccuWeatherWrapper)
+  })
+
+  it('should receive apiURL as an option', () => {
+    const accuweather = new AccuWeatherWrapper({
+      apiURL: 'http://api-url.com'
+    })
+
+    expect(accuweather.apiURL).to.be.equal('http://api-url.com')
+  })
+
+  it('should use the default apiURL if not provided', () => {
+    const accuweather = new AccuWeatherWrapper({})
+
+    expect(accuweather.apiURL).to.be.equal('http://dataservice.accuweather.com')
+  })
+
+  it('should receive api token as an option', () => {
+    const accuweather = new AccuWeatherWrapper({
+      token: 'azsxdcfvgbhnjmklç'
+    })
+
+    expect(accuweather.token).to.be.equal('azsxdcfvgbhnjmklç')
+  })
+
+  describe('request method', () => {
+    let fetchedStub
+    let promise
+
+    beforeEach(() => {
+      fetchedStub = sinon.stub(global, 'fetch')
+    })
+
+    afterEach(() => {
+      fetchedStub.restore()
+    })
+
+    it('should have a request method', () => {
+      const accuweather = new AccuWeatherWrapper({})
+
+      expect(accuweather.request).to.exist
+    })
+
+    it('should call fetch when request', () => {
+      const accuweather = new AccuWeatherWrapper({
+        token: 'foo'
+      })
+
+      accuweather.request('url')
+
+      expect(fetchedStub).to.have.been.calledOnce
+    })
+
+    it('should call fetch with the correct URL', () => {
+      const accuweather = new AccuWeatherWrapper({
+        token: 'foo'
+      })
+
+      accuweather.request('www')
+
+      expect(fetchedStub).to.have.been.calledWith('www')
+    })
+
+    it('should call fetch with the correct headers', () => {
+      const accuweather = new AccuWeatherWrapper({
+        token: 'foo'
+      })
+
+      const headers = {
+        headers: {
+          'Accept-Encoding': 'gzip,deflate'
+        }
+      }
+
+      accuweather.request('www')
+
+      expect(fetchedStub).to.have.been.calledWith('www', headers)
+    })
   })
 })
