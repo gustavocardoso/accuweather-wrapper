@@ -1,5 +1,5 @@
 {
-  "name": "js-starter-boilerplate",
+  "name": "accuweather-wrapper",
   "version": "1.0.0",
   "description": "A simple boilerplate for simple JS projects",
   "main": "index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gustavocardoso/js-starter-boilerplate.git"
+    "url": "git+https://github.com/gustavocardoso/accuweather-wrapper.git"
   },
   "keywords": [
     "js",
@@ -26,9 +26,9 @@
   "author": "Gustavo Cardoso",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gustavocardoso/js-starter-boilerplate/issues"
+    "url": "https://github.com/gustavocardoso/accuweather-wrapper/issues"
   },
-  "homepage": "https://github.com/gustavocardoso/js-starter-boilerplate#readme",
+  "homepage": "https://github.com/gustavocardoso/accuweather-wrapper#readme",
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
