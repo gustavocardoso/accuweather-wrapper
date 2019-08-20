@@ -1,9 +1,13 @@
 import { apiURL } from './config'
 
+import location from './location'
+
 export default class AccuWeatherWrapper {
   constructor (options) {
     this.apiURL = options.apiURL || apiURL
     this.token = options.token
+
+    this.getLocation = location.bind(this)()
   }
 
   request (url) {
