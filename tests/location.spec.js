@@ -33,6 +33,10 @@ describe('Location', () => {
 
   describe('Smoke tests', () => {
     it('should have getLocation method', () => {
+      expect(accuweather.getLocation).to.exist
+    })
+
+    it('should have byGeoposition method', () => {
       expect(accuweather.getLocation.byGeoposition).to.exist
     })
   })
@@ -44,16 +48,7 @@ describe('Location', () => {
       expect(fetchedStub).to.have.been.calledOnce
     })
 
-    it('should call fetch with the correct URL', () => {
-      const location = accuweather.getLocation.byGeoposition('49.246', '-123.116')
-      expect(fetchedStub).to.have.been.calledWith(
-        `${
-          accuweather.apiURL
-        }/locations/v1/cities/geoposition/search?apikey=foo&q=49.246%2C-123.116`
-      )
-    })
-
-    it('should call fetch with the correct parameters', () => {
+    it('should call fetch with the correct URL and parameters', () => {
       const location = accuweather.getLocation.byGeoposition('49.246', '-123.116')
 
       expect(fetchedStub).to.have.been.calledWith(
