@@ -42,6 +42,12 @@ describe('AccuWeatherWrapper Library', () => {
 
     beforeEach(() => {
       fetchedStub = sinon.stub(global, 'fetch')
+
+      promise = fetchedStub.resolves({
+        json: () => ({
+          body: 'json'
+        })
+      })
     })
 
     afterEach(() => {
@@ -88,6 +94,18 @@ describe('AccuWeatherWrapper Library', () => {
       accuweather.request('www')
 
       expect(fetchedStub).to.have.been.calledWith('www', headers)
+    })
+
+    it('should return the correct data from the promise', () => {
+      const accuweather = new AccuWeatherWrapper({
+        token: 'foo'
+      })
+
+      const data = accuweather.request('www')
+
+      data.then(data => {
+        expect(data).to.be.eql({ body: 'json' })
+      })
     })
   })
 })

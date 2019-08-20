@@ -13,6 +13,6 @@ export default class AccuWeatherWrapper {
       }
     }
 
-    fetch(url, headers)
+    return fetch(url, headers).then(data => data.json())
   }
 }
