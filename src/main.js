@@ -1,6 +1,7 @@
 import { apiURL } from './config'
 
 import location from './location'
+import weather from './weather'
 
 export default class AccuWeatherWrapper {
   constructor (options) {
@@ -8,6 +9,7 @@ export default class AccuWeatherWrapper {
     this.token = options.token
 
     this.getLocation = location.bind(this)()
+    this.getWeather = weather.bind(this)()
   }
 
   request (url) {
@@ -17,6 +19,8 @@ export default class AccuWeatherWrapper {
       }
     }
 
-    return fetch(url, headers).then(data => data.json())
+    return fetch(url, headers)
+      .then(data => data.json())
+      .catch(err => console.log(err))
   }
 }
