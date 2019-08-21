@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: join(__dirname, 'dist'),
     libraryTarget: 'umd',
-    library: 'spotifyWrapper'
+    library: 'accuWeatherWrapper'
   },
   devtool: 'source-map',
   module: {
