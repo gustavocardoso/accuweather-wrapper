@@ -40,7 +40,7 @@ describe('Weather', () => {
       expect(accuweather.getWeather.current).to.exist
     })
 
-    it('should have forecast method', () => {
+    it.skip('should have forecast method', () => {
       expect(accuweather.getWeather.forecast).to.exist
     })
   })

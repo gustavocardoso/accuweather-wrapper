@@ -6,7 +6,6 @@ export default function weather () {
       }`
 
       return this.request(url)
-    },
-    forecast: () => {}
+    }
   }
 }

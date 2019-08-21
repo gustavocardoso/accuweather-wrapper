@@ -2,7 +2,7 @@
   "name": "accuweather-wrapper",
   "version": "1.0.0",
   "description": "A simple boilerplate for simple JS projects",
-  "main": "index.js",
+  "main": "lib/main.js",
   "scripts": {
     "clear": "rimraf lib && rimraf dist",
     "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
@@ -29,6 +29,25 @@
     "dev"
   ],
   "author": "Gustavo Cardoso",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
+  },
+  "resolutions": {
+    "babel-core": "^7.0.0-bridge"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gustavocardoso/accuweather-wrapper/issues"

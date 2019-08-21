@@ -21,6 +21,6 @@ export default class AccuWeatherWrapper {
 
     return fetch(url, headers)
       .then(data => data.json())
-      .catch(err => console.log(err))
+      .catch(err => err)
   }
 }

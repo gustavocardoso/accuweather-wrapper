@@ -107,5 +107,19 @@ describe('AccuWeatherWrapper Library', () => {
         expect(data).to.be.eql({ body: 'json' })
       })
     })
+
+    it('should handle promise error', () => {
+      const accuweather = new AccuWeatherWrapper({
+        token: 'foo'
+      })
+
+      promise = fetchedStub.rejects({ error: 'errors' })
+
+      const data = accuweather.request('www')
+
+      data.then(res => {
+        expect(res).to.be.eql({ error: 'error' })
+      })
+    })
   })
 })
