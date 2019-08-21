@@ -96,30 +96,26 @@ describe('AccuWeatherWrapper Library', () => {
       expect(fetchedStub).to.have.been.calledWith('www', headers)
     })
 
-    it('should return the correct data from the promise', () => {
+    it('should return the correct data from the promise', async () => {
       const accuweather = new AccuWeatherWrapper({
         token: 'foo'
       })
 
-      const data = accuweather.request('www')
+      const data = await accuweather.request('www')
 
-      data.then(data => {
-        expect(data).to.be.eql({ body: 'json' })
-      })
+      expect(data).to.be.eql({ body: 'json' })
     })
 
-    it('should handle promise error', () => {
+    it('should handle promise error', async () => {
       const accuweather = new AccuWeatherWrapper({
         token: 'foo'
       })
 
-      promise = fetchedStub.rejects({ error: 'errors' })
+      promise = fetchedStub.rejects('error')
 
-      const data = accuweather.request('www')
+      const data = await accuweather.request('www')
 
-      data.then(res => {
-        expect(res).to.be.eql({ error: 'error' })
-      })
+      expect(data).to.be.eql({ error: 'error' })
     })
   })
 })
