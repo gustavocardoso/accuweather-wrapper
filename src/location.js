@@ -1,11 +1,13 @@
 export default function getLocation () {
   return {
-    byGeoposition: (latitude, longitude) => {
+    byGeoposition: async (latitude, longitude) => {
       const locationURL = `${this.apiURL}/locations/v1/cities/geoposition/search?apikey=${
         this.token
       }&q=${latitude}%2C${longitude}`
 
-      return this.request(locationURL)
+      const location = await this.request(locationURL)
+
+      return { key: location.Key }
     }
   }
 }

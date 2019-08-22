@@ -20,10 +20,59 @@ describe('Location', () => {
 
     fetchedStub = sinon.stub(global, 'fetch')
 
+    const data = {
+      Version: 1,
+      Key: '3387236',
+      Type: 'City',
+      Rank: 65,
+      LocalizedName: 'Marpole',
+      EnglishName: 'Marpole',
+      PrimaryPostalCode: 'V6P',
+      Region: {
+        ID: 'NAM',
+        LocalizedName: 'North America',
+        EnglishName: 'North America'
+      },
+      Country: { ID: 'CA', LocalizedName: 'Canada', EnglishName: 'Canada' },
+      AdministrativeArea: {
+        ID: 'BC',
+        LocalizedName: 'British Columbia',
+        EnglishName: 'British Columbia',
+        Level: 1,
+        LocalizedType: 'Province',
+        EnglishType: 'Province',
+        CountryID: 'CA'
+      },
+      TimeZone: {
+        Code: 'PDT',
+        Name: 'America/Vancouver',
+        GmtOffset: -7,
+        IsDaylightSaving: true,
+        NextOffsetChange: '2019-11-03T09:00:00Z'
+      },
+      GeoPosition: {
+        Latitude: 49.207,
+        Longitude: -123.132,
+        Elevation: { Metric: [Object], Imperial: [Object] }
+      },
+      IsAlias: false,
+      ParentCity: {
+        Key: '53286',
+        LocalizedName: 'Vancouver',
+        EnglishName: 'Vancouver'
+      },
+      SupplementalAdminAreas: [
+        {
+          Level: 2,
+          LocalizedName: 'Greater Vancouver',
+          EnglishName: 'Greater Vancouver'
+        }
+      ],
+      DataSets: ['Alerts', 'ForecastConfidence', 'MinuteCast', 'Radar']
+    }
+
     promise = fetchedStub.resolves({
-      json: () => ({
-        body: 'json'
-      })
+      json: () => data
     })
   })
 
@@ -48,30 +97,13 @@ describe('Location', () => {
       expect(fetchedStub).to.have.been.calledOnce
     })
 
-    it('should call fetch with the correct URL and parameters', () => {
-      const location = accuweather.getLocation.byGeoposition('49.246', '-123.116')
-
-      expect(fetchedStub).to.have.been.calledWith(
-        `${accuweather.apiURL}/locations/v1/cities/geoposition/search?apikey=${
-          accuweather.token
-        }&q=49.246%2C-123.116`
+    it('should return location key from the data', async () => {
+      const locationKey = await accuweather.getLocation.byGeoposition(
+        '49.246',
+        '-123.116'
       )
 
-      const location2 = accuweather.getLocation.byGeoposition('50', '55')
-
-      expect(fetchedStub).to.have.been.calledWith(
-        `${accuweather.apiURL}/locations/v1/cities/geoposition/search?apikey=${
-          accuweather.token
-        }&q=50%2C55`
-      )
-    })
-
-    it('should return the correct data from the promise', () => {
-      const location = accuweather.getLocation.byGeoposition('49.246', '-123.116')
-
-      location.then(data => {
-        expect(data).to.be.eql({ body: 'json' })
-      })
+      expect(locationKey).to.be.eql({ key: '3387236' })
     })
   })
 })
