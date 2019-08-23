@@ -36,8 +36,8 @@ describe('Weather', () => {
       expect(accuweather.getWeather).to.exist
     })
 
-    it('should have current method', () => {
-      expect(accuweather.getWeather.current).to.exist
+    it('should have currentConditions method', () => {
+      expect(accuweather.getWeather.currentConditions).to.exist
     })
 
     it.skip('should have forecast method', () => {
@@ -45,31 +45,31 @@ describe('Weather', () => {
     })
   })
 
-  describe('current', () => {
+  describe('currentConditions', () => {
     it('should call fetch method', () => {
-      const current = accuweather.getWeather.current()
+      const currentConditions = accuweather.getWeather.currentConditions()
 
       expect(fetchedStub).to.have.been.calledOnce
     })
 
     it('should call fetch with the correct URL and parameters', () => {
-      const current = accuweather.getWeather.current(123456)
+      const currentConditions = accuweather.getWeather.currentConditions(3387236)
 
       expect(fetchedStub).to.have.been.calledWith(
-        `${accuweather.apiURL}/currentconditions/v1/123456?apikey=foo`
+        `${accuweather.apiURL}/currentconditions/v1/3387236?apikey=foo`
       )
 
-      const current2 = accuweather.getWeather.current(98765)
+      const currentConditions2 = accuweather.getWeather.currentConditions(98765)
 
       expect(fetchedStub).to.have.been.calledWith(
         `${accuweather.apiURL}/currentconditions/v1/98765?apikey=foo`
       )
     })
 
-    it('should return the correct data from promise', () => {
-      const current = accuweather.getWeather.current(98765)
+    it('should return data from the promise', () => {
+      const currentConditions = accuweather.getWeather.currentConditions(3387236)
 
-      current.then(data => {
+      currentConditions.then(data => {
         expect(data).to.be.eql({ body: 'json' })
       })
     })

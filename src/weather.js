@@ -1,6 +1,6 @@
 export default function weather () {
   return {
-    current: locationKey => {
+    currentConditions: locationKey => {
       const url = `${this.apiURL}/currentconditions/v1/${locationKey}?apikey=${
         this.token
       }`
