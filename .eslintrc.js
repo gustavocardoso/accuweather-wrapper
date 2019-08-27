@@ -1,7 +1,9 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true
+    es6: true,
+    mocha: true,
+    node: true
   },
   extends: ['standard'],
   globals: {
@@ -12,5 +14,9 @@ module.exports = {
     ecmaVersion: 8,
     sourceType: 'module'
   },
-  rules: {}
+  plugins: ['chai-friendly'],
+  rules: {
+    'no-unused-expressions': 0,
+    'chai-friendly/no-unused-expressions': 2
+  }
 }

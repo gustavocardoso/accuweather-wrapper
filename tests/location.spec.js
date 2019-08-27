@@ -11,7 +11,7 @@ global.fetch = require('node-fetch')
 describe('Location', () => {
   let accuweather
   let fetchedStub
-  let promise
+  let data
 
   beforeEach(() => {
     accuweather = new AccuWeatherWrapper({
@@ -20,7 +20,7 @@ describe('Location', () => {
 
     fetchedStub = sinon.stub(global, 'fetch')
 
-    const data = {
+    data = {
       Version: 1,
       Key: '3387236',
       Type: 'City',
@@ -71,7 +71,7 @@ describe('Location', () => {
       DataSets: ['Alerts', 'ForecastConfidence', 'MinuteCast', 'Radar']
     }
 
-    promise = fetchedStub.resolves({
+    fetchedStub.resolves({
       json: () => data
     })
   })
@@ -92,7 +92,7 @@ describe('Location', () => {
 
   describe('byLocation', () => {
     it('should call fetch method', () => {
-      const location = accuweather.getLocation.byGeoposition('49.246', '-123.116')
+      accuweather.getLocation.byGeoposition('49.246', '-123.116')
 
       expect(fetchedStub).to.have.been.calledOnce
     })
@@ -103,7 +103,7 @@ describe('Location', () => {
         '-123.116'
       )
 
-      expect(locationKey).to.be.eql({ key: '3387236' })
+      expect(locationKey).to.be.eql(data)
     })
   })
 })

@@ -7,7 +7,7 @@ export default function location () {
 
       const location = await this.request(locationURL)
 
-      return { key: location.Key }
+      return location
     }
   }
 }
