@@ -10,6 +10,9 @@ module.exports = {
     library: 'accuWeatherWrapper'
   },
   devtool: 'source-map',
+  node: {
+    fs: 'empty'
+  },
   module: {
     rules: [
       {
