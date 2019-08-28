@@ -1,7 +1,9 @@
-import dotenv from 'dotenv/config'
+import dotenv from 'dotenv'
 
 import location from './location'
 import weather from './weather'
+
+dotenv.config()
 
 export default class AccuWeatherWrapper {
   constructor (options) {
