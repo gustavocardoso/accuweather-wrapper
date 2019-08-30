@@ -109,14 +109,6 @@ describe('Weather', () => {
           `${accuweather.apiURL}/forecasts/v1/daily/1day/3387236?apikey=foo&metric=true`
         )
       })
-
-      it('call basic parameters', () => {
-        accuweather.getWeather.oneDayForecast(3387236)
-
-        expect(fetchedStub).to.have.been.calledWith(
-          `${accuweather.apiURL}/forecasts/v1/daily/1day/3387236?apikey=foo`
-        )
-      })
     })
 
     it('should return data from the promise', async () => {
@@ -124,5 +116,37 @@ describe('Weather', () => {
 
       expect(oneDayForecast).to.be.eql({ body: 'json' })
     })
+  })
+
+  describe('fiveDaysForecast', () => {
+    it('should call fetch method', () => {
+      accuweather.getWeather.fiveDaysForecast()
+
+      expect(fetchedStub).to.have.been.calledOnce
+    })
+
+    context('URL parameters', () => {
+      it('should call api with basic parameters', () => {
+        accuweather.getWeather.fiveDaysForecast(3387236)
+
+        expect(fetchedStub).to.have.been.calledWith(
+          `${accuweather.apiURL}/forecasts/v1/daily/5day/3387236?apikey=foo`
+        )
+      })
+
+      it('should call api with metric parameter', () => {
+        accuweather.getWeather.fiveDaysForecast(3387236, true)
+
+        expect(fetchedStub).to.have.been.calledWith(
+          `${accuweather.apiURL}/forecasts/v1/daily/5day/3387236?apikey=foo&metric=true`
+        )
+      })
+    })
+
+    it('should return data from the promise', async () => {
+      const fiveDaysForecast = await accuweather.getWeather.fiveDaysForecast(3387236)
+
+      expect(fiveDaysForecast).to.be.eql({ body: 'json' })
+    });
   })
 })

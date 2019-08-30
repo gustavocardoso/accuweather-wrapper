@@ -16,6 +16,12 @@ export default function weather () {
       return this.request(url)
     },
 
-    fiveDaysForecast: () => {}
+    fiveDaysForecast: (locationKey, metric) => {
+      const url = `${this.apiURL}/forecasts/v1/daily/5day/${locationKey}?apikey=${
+        this.token
+      }${metric ? '&metric=true' : ''}`
+
+      return this.request(url)
+    }
   }
 }
