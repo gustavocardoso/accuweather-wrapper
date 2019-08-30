@@ -147,6 +147,6 @@ describe('Weather', () => {
       const fiveDaysForecast = await accuweather.getWeather.fiveDaysForecast(3387236)
 
       expect(fiveDaysForecast).to.be.eql({ body: 'json' })
-    });
+    })
   })
 })
