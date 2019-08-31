@@ -14,15 +14,7 @@ describe('AccuWeatherWrapper Library', () => {
     expect(accuweather).to.be.an.instanceOf(AccuWeatherWrapper)
   })
 
-  it('should receive apiURL as an option', () => {
-    const accuweather = new AccuWeatherWrapper({
-      apiURL: 'http://api-url.com'
-    })
-
-    expect(accuweather.apiURL).to.be.equal('http://api-url.com')
-  })
-
-  it('should use the default apiURL if not provided', () => {
+  it('should have a default apiURL', () => {
     const accuweather = new AccuWeatherWrapper({})
 
     expect(accuweather.apiURL).to.be.equal('http://dataservice.accuweather.com')
