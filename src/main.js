@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+import { apiURL } from './config'
 
 import location from './location'
 import weather from './weather'
@@ -7,7 +8,7 @@ dotenv.config()
 
 export default class AccuWeatherWrapper {
   constructor (options) {
-    this.apiURL = options.apiURL || process.env.API_URL
+    this.apiURL = apiURL
     this.token = options.token || process.env.ACCESS_TOKEN
 
     this.getLocation = location.bind(this)()
