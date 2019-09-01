@@ -28,6 +28,12 @@ describe('AccuWeatherWrapper Library', () => {
     expect(accuweather.token).to.be.equal('azsxdcfvgbhnjmklç')
   })
 
+  it('should use token from .env when option was not passed', () => {
+    const accuweather = new AccuWeatherWrapper({})
+
+    expect(accuweather.token).to.not.be.empty
+  })
+
   describe('request method', () => {
     let fetchedStub
     let promise
