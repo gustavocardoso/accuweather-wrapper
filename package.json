@@ -1,7 +1,7 @@
 {
   "name": "accuweather-wrapper",
   "version": "1.0.0",
-  "description": "A simple boilerplate for simple JS projects",
+  "description": "A simple wrapper to work with the Accuweather Web API",
   "main": "lib/main.js",
   "scripts": {
     "clear": "rimraf lib && rimraf dist",
@@ -23,10 +23,12 @@
   },
   "keywords": [
     "js",
-    "starter",
-    "boilerplate",
-    "app",
-    "dev"
+    "node",
+    "api",
+    "accuweather",
+    "weather",
+    "forecast",
+    "development"
   ],
   "author": "Gustavo Cardoso",
   "files": [
