@@ -1,6 +1,6 @@
 # AccuWeather Wrapper
 
-A simple wrapper to work with the [Accuweather Web API](https://developer.accuweather.com).
+A simple wrapper to work with the [Accuweather Web API](https://developer.accuweather.com). The API provides a lot of methods and options, but I've decided to start just with what I needed to use in my application.
 
 [![Build Status](https://travis-ci.com/gustavocardoso/accuweather-wrapper.svg?branch=master)](https://travis-ci.com/gustavocardoso/accuweather-wrapper) [![Coverage Status](https://coveralls.io/repos/github/gustavocardoso/accuweather-wrapper/badge.svg?branch=master)](https://coveralls.io/github/gustavocardoso/accuweather-wrapper?branch=master)
 
@@ -101,6 +101,78 @@ const currentConditions = accuweather.getWeather.currentConditions(locationKey)
 
 ```js
 accuweather.getLocation.byGeoposition(49.2093644, -123.1270038).then(data => {
+  // do what you want with the data
+})
+```
+
+### getWeather.currentConditions(locationKey)
+
+> Return the current conditions for the given location key. Test in [AccuWeather Web Console](https://developer.accuweather.com/accuweather-current-conditions-api/apis/get/currentconditions/v1/%7BlocationKey%7D).
+
+**Arguments**
+
+| Argument      | Type     | Default |
+| ------------- | -------- | ------- |
+| `locationKey` | _number_ |         |
+| `metric`      | _bool_   | false   |
+
+**Example**
+
+```js
+accuweathergetWeather.currentConditions(locationKey).then(data => {
+  // do what you want with the data
+})
+
+// with metric system
+accuweathergetWeather.currentConditions(locationKey, true).then(data => {
+  // do what you want with the data
+})
+```
+
+### getWeather.oneDayForecast(locationKey)
+
+> Return daily forecast for the given location key. Test in [AccuWeather Web Console](https://developer.accuweather.com/accuweather-forecast-api/apis/get/forecasts/v1/daily/1day/%7BlocationKey%7D).
+
+**Arguments**
+
+| Argument      | Type     | Default |
+| ------------- | -------- | ------- |
+| `locationKey` | _number_ |         |
+| `metric`      | _bool_   | false   |
+
+**Example**
+
+```js
+accuweathergetWeather.oneDayForecast(locationKey).then(data => {
+  // do what you want with the data
+})
+
+// with metric system
+accuweathergetWeather.oneDayForecast(locationKey, true).then(data => {
+  // do what you want with the data
+})
+```
+
+### getWeather.fiveDaysForecast(locationKey)
+
+> Return an array of daily forecasts for the next 5 days for the given location key. Test in [AccuWeather Web Console](https://developer.accuweather.com/accuweather-forecast-api/apis/get/forecasts/v1/daily/5day/%7BlocationKey%7D).
+
+**Arguments**
+
+| Argument      | Type     | Default |
+| ------------- | -------- | ------- |
+| `locationKey` | _number_ |         |
+| `metric`      | _bool_   | false   |
+
+**Example**
+
+```js
+accuweathergetWeather.fiveDaysForecast(locationKey).then(data => {
+  // do what you want with the data
+})
+
+// with metric system
+accuweathergetWeather.oneDayForecast(locationKey, true).then(data => {
   // do what you want with the data
 })
 ```
