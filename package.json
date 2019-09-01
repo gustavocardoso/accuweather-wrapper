@@ -1,7 +1,7 @@
 {
   "name": "accuweather-wrapper",
   "version": "1.0.0",
-  "description": "A simple wrapper for the Accuweather Web API",
+  "description": "A simple wrapper to work with the Accuweather Web API",
   "main": "lib/main.js",
   "scripts": {
     "clear": "rimraf lib && rimraf dist",

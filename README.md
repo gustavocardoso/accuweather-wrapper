@@ -1,8 +1,8 @@
 # AccuWeather Wrapper
 
-[![Build Status](https://travis-ci.com/gustavocardoso/accuweather-wrapper.svg?branch=master)](https://travis-ci.com/gustavocardoso/accuweather-wrapper) [![Coverage Status](https://coveralls.io/repos/github/gustavocardoso/accuweather-wrapper/badge.svg?branch=master)](https://coveralls.io/github/gustavocardoso/accuweather-wrapper?branch=master)
+A simple wrapper to work with the [Accuweather Web API](https://developer.accuweather.com).
 
-A wrapper to work with the [Accuweather Web API](https://developer.accuweather.com).
+[![Build Status](https://travis-ci.com/gustavocardoso/accuweather-wrapper.svg?branch=master)](https://travis-ci.com/gustavocardoso/accuweather-wrapper) [![Coverage Status](https://coveralls.io/repos/github/gustavocardoso/accuweather-wrapper/badge.svg?branch=master)](https://coveralls.io/github/gustavocardoso/accuweather-wrapper?branch=master)
 
 ## Browser Support
 
@@ -80,6 +80,29 @@ const accuweather = new AccuWeatherWrapper({
 })
 
 const currentConditions = accuweather.getWeather.currentConditions(locationKey)
+```
+
+## Methods
+
+> Follow the methods that the library provides.
+
+### getLocation.byGeoposition(latitude, longitude)
+
+> Return the location key for the given coordinates (location key is necessary to get the forecasts). Test in [AccuWeather Web Console](https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/geoposition/search).
+
+**Arguments**
+
+| Argument    | Type     |
+| ----------- | -------- |
+| `latitude`  | _number_ |
+| `longitude` | _number_ |
+
+**Example**
+
+```js
+accuweather.getLocation.byGeoposition(49.2093644, -123.1270038).then(data => {
+  // do what you want with the data
+})
 ```
 
 ## Contributing
